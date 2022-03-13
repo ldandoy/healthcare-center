@@ -1,0 +1,15 @@
+FROM node:lts
+
+WORKDIR /app
+
+COPY ./back/package.json /app
+
+COPY ./back/yarn.lock /app
+
+RUN yarn install
+
+COPY ./back/ /app
+
+EXPOSE 1337
+
+CMD ["yarn", "develop"]
