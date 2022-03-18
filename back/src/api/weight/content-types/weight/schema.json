@@ -4,7 +4,8 @@
   "info": {
     "singularName": "weight",
     "pluralName": "weights",
-    "displayName": "weight"
+    "displayName": "weight",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -19,6 +20,12 @@
     "day": {
       "type": "date",
       "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "weights"
     }
   }
 }
