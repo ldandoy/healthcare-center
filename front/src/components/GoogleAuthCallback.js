@@ -1,35 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+
+import {setAuth} from '../features/authSlice'
 
 function GoogleAuthCallback() {
-  const [auth, setAuth] = useState()
   const location = useLocation()
+  const navigate = useNavigate()
+  const auth = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
   
   useEffect(() => {
     if (!location) {
-      return
+      return ;
     }
     
     const { search } = location
+    console.log(search);
     axios({
       method: 'GET',
       url: `http://localhost:1337/api/auth/google/callback${search}`,
     })
-      .then((res) => res.data)
-      .then(setAuth)
-  }, [location])
+      .then((res) => {
+        localStorage.setItem('jwt', res.data.jwt);
+        dispatch(setAuth({user: res.data.user}))
+        navigate('/');
+      })
+  }, [location]);
 
   return (
-    <div>
-      {auth && (
-        <>
-          <div>Jwt: {auth.jwt}</div>
-          <div>User Id: {auth.user.id}</div>
-          <div>Provider: {auth.user.provider}</div>
-        </>
-      )}
-    </div>
+    <div></div>
   )
 }
 
