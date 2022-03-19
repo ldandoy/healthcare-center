@@ -5,13 +5,15 @@ import { getAPI } from './services/fetchData';
 import { setAuth } from './features/authSlice'
 import WeightAddForm from './components/WeightAddForm'
 import WeightList from './components/WeightList'
+import TodoAddForm from './components/TodoAddForm'
+import TodoList from './components/TodoList'
+import ShoppingList from './components/ShoppingList'
 
 const App = () => {
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
 
   useEffect(() => {
-    // To check if we are logged
     const getData = async () => {
       const res = await getAPI('/users/me');
       dispatch(setAuth({user: res.data}))
@@ -36,13 +38,19 @@ const App = () => {
           <h1 className='txt-large'>Bienvenue { auth.user.username }</h1>
         </div>
         <div className='mt-30'>
-          <div className='row'>
-            <div className='col'>
-              <WeightAddForm />
-              <WeightList />
+          <div className='row row-half'>
+            <div className='col col-half'>
+              <div>
+                <TodoList />
+              </div>
             </div>
-            <div className='col'>
-              
+            <div className='col col-half'>
+              <div>
+                <ShoppingList />
+              </div>
+              <div className='mt-20'>
+                <WeightList />
+              </div>
             </div>
           </div>
         </div>

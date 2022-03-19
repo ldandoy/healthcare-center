@@ -1,0 +1,26 @@
+.box {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid rgb(196, 196, 196);
+
+    &.Urgency {
+        border-left: 3px solid red;
+    }
+    
+    &.High {
+        border-left: 3px solid orange;
+    }
+
+    &.Normal {
+        border-left: 3px solid green;
+    }
+
+    &.Low {
+        border-left: 3px solid grey;
+    }
+
+    &:hover {
+        background-color: aliceblue;
+        cursor: pointer;
+    }
+}

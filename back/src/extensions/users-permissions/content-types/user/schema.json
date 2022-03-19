@@ -68,6 +68,18 @@
       "relation": "oneToMany",
       "target": "api::weight.weight",
       "mappedBy": "user"
+    },
+    "todos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::todo.todo",
+      "mappedBy": "user"
+    },
+    "shopping_lists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::shopping-list.shopping-list",
+      "mappedBy": "user"
     }
   }
 }

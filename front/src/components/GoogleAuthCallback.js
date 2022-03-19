@@ -17,7 +17,6 @@ function GoogleAuthCallback() {
     }
     
     const { search } = location
-    console.log(search);
     axios({
       method: 'GET',
       url: `http://localhost:1337/api/auth/google/callback${search}`,
