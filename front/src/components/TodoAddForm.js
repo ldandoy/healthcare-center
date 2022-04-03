@@ -7,25 +7,25 @@ const TodoAddForm = () => {
     const [todo, setTodo] = useState({
         content: '',
         done: false
-      })
-      const [addTodo] = useAddTodoMutation()
-    
-      const onChangeHandler = (e) => {
+    })
+    const [addTodo] = useAddTodoMutation()
+
+    const onChangeHandler = (e) => {
         const { name, value } = e.target;
-    
+
         setTodo({...todo, [name]:value});
-      }
-    
-      const onSubmitHandler = async (e) => {
+    }
+
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
-    
+
         const res = await addTodo(todo)
         
         setTodo({
             content: '',
             done: false
         })
-      }
+    }
 
     return (
         <form className='form-bordered' onSubmit={onSubmitHandler}>

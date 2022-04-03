@@ -10,6 +10,7 @@ const Default = ({children}) => {
                     <li><Link to="/shoppinglist">Liste des courses</Link></li>
                     <li><Link to="/todolist">Liste des tâches</Link></li>
                     <li><Link to="/weightlist">Liste des poids</Link></li>
+                    <li><Link to="/meallist">Liste des repas</Link></li>
                 </ul>
             </div>
         </nav>

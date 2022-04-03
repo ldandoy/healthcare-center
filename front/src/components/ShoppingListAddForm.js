@@ -60,7 +60,7 @@ const ShoppingListAddForm = () => {
         />
       </div>
       <div className="form-group">
-        <label className="form-label" htmlFor="state">Achté</label>
+        <label className="form-label" htmlFor="state">Acheté</label>
         <input
             id="state"
             type="checkbox"

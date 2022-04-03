@@ -9,8 +9,11 @@ import ShoppingList from './components/ShoppingList'
 import ShoppingListAddForm from './components/ShoppingListAddForm'
 import TodoList from './components/TodoList'
 import TodoAddForm from './components/TodoAddForm'
+import TodoListEditForm from './components/TodoListEditForm'
 import WeightList from './components/WeightList'
 import WeightAddForm from './components/WeightAddForm'
+import MealList from './components/MealList'
+import MealAddForm from './components/MealAddForm'
 import App from './App';
 import Default from './layouts/Default'
 
@@ -27,8 +30,11 @@ ReactDOM.render(
           <Route path="/shoppinglistadd" element={<Default><ShoppingListAddForm /></Default>} />
           <Route path="/todolist" element={<Default><TodoList /></Default>} />
           <Route path="/todolistadd" element={<Default><TodoAddForm /></Default>} />
+          <Route path='/todolistedit/:todoId' element={<Default><TodoListEditForm /></Default>} />
           <Route path="/weightlist" element={<Default><WeightList /></Default>} />
           <Route path="/weightadd" element={<Default><WeightAddForm /></Default>} />
+          <Route path="/meallist" element={<Default><MealList /></Default>} />
+          <Route path="meallistadd/:day/:time" element={<Default><MealAddForm /></Default>} />
         </Routes>
       </BrowserRouter>
     </Provider>

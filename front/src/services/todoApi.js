@@ -18,6 +18,10 @@ export const todoApi = createApi({
             query: () => `/todos?populate=user&sort[0]=createdAt%3Adesc`,
             providesTags: ['todos']
         }),
+        getTodo: builder.query({
+            query: (todoId) => `/todos/${todoId}?populate=user`,
+            providesTags: ['todos']
+        }),
         addTodo: builder.mutation({
             query: (todo) => ({
                 url: `/todos`,
@@ -25,8 +29,29 @@ export const todoApi = createApi({
                 body: { data: todo }
             }),
             invalidatesTags: ['todos']
+        }),
+        deleteTodo: builder.mutation({
+            query: (todoId) => ({
+                url: `/todos/${todoId}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ['todos']
+        }),
+        updateTodo: builder.mutation({
+            query: ({todoId, ...todo}) => ({
+                url: `/todos/${todoId}`,
+                method: "PUT",
+                body: { data: todo }
+            }),
+            invalidatesTags: ['todos']
         })
     })
 })
 
-export const { useGetTodosQuery, useAddTodoMutation } = todoApi
+export const { 
+    useGetTodosQuery, 
+    useGetTodoQuery, 
+    useAddTodoMutation, 
+    useDeleteTodoMutation, 
+    useUpdateTodoMutation 
+} = todoApi

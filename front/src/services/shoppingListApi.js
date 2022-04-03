@@ -25,8 +25,15 @@ export const shoppingListApi = createApi({
                 body: { data: article }
             }),
             invalidatesTags: ['shopping-lists']
-        })
+        }),
+        deleteShoppingList: builder.mutation({
+            query: (shoppinglistId) => ({
+                url: `/shopping-lists/${shoppinglistId}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ['shopping-lists']
+        }),
     })
 })
 
-export const { useGetShoppingListsQuery, useAddShoppingListMutation } = shoppingListApi
+export const { useGetShoppingListsQuery, useAddShoppingListMutation, useDeleteShoppingListMutation } = shoppingListApi
